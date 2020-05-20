@@ -20,6 +20,15 @@ form.addEventListener("click", (event) => {
     event.preventDefault();
     currentSearch = searchValue;
     searchPhotos(searchValue);
+    // if (window.innerWidth > 450) {
+    //     searchPhotos(searchValue);
+    // } else {
+    //     const searchInput = document.createElement("div");
+    //     searchInput.classList.add("input-mobile");
+    //     searchInput.innerHTML = `<input type="text"/>`
+    //     form.appendChild(searchInput);
+
+    // }
 });
 
 more.addEventListener("click", loadMore);
@@ -81,7 +90,7 @@ function clear() {
 async function loadMore() {
     page++;
     if (currentSearch) {
-        fetchLink = `https://api.pexels.com/v1/search?query=${currentSearch}+query&per_page=15&page=${page}`
+        fetchLink = `https://api.pexels.com/v1/search?query=${currentSearch}+query&per_page=15&page=${page}`;
     } else {
         fetchLink = `https://api.pexels.com/v1/curated?per_page=15&page=${page}`;
     }

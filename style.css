@@ -7,8 +7,7 @@
 }
 
 body {
-    width: 80%;
-    margin: 0 auto;
+    overflow-x: hidden;
     font-family: "Roboto", sans-serif;
     background: rgba(200, 200, 200, 0.3);
 }
@@ -18,12 +17,12 @@ header {
     min-height: 30vh;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 90%;
 }
 
-header h2 a img {
-    width: 70px;
-    height: 50px;
-}
+header a img {}
 
 #logo {
     text-decoration: none;
@@ -55,6 +54,11 @@ header h2 a img {
     /* background: rgb(74, 68, 131); */
     color: rgb(74, 68, 131);
     cursor: pointer;
+}
+
+main {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .gallery-info {
