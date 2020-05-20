@@ -25,10 +25,6 @@
         width: 110px;
         height: 70px;
     }
-    #logo {
-        text-decoration: none;
-        color: #000;
-    }
     .search-form {
         padding: 0;
         display: flex;
