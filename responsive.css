@@ -1,0 +1,40 @@
+/** @format */
+
+@media screen and (max-width: 400px) {
+    body {
+        width: 100%;
+        margin: 0 auto;
+        font-family: "Roboto", sans-serif;
+        background: rgba(200, 200, 200, 0.3);
+    }
+    header {
+        min-height: 10vh;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 auto 0 auto;
+        max-width: 100%;
+        width: 100%;
+    }
+    header h2 {
+        padding: none;
+    }
+    #logo {
+        text-decoration: none;
+        color: #000;
+    }
+    .search-form {
+        padding: none;
+        display: flex;
+    }
+    .search-form input {
+        display: none;
+    }
+    .search-form a {
+        border: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+        /* background: rgb(74, 68, 131); */
+        color: rgb(74, 68, 131);
+        cursor: pointer;
+    }
+}

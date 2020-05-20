@@ -16,7 +16,7 @@ let currentSearch;
 
 //Event Listeners
 searchInput.addEventListener("input", updateInput);
-form.addEventListener("submit", (event) => {
+form.addEventListener("click", (event) => {
     event.preventDefault();
     currentSearch = searchValue;
     searchPhotos(searchValue);
