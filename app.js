@@ -79,7 +79,12 @@ async function searchPhotos(query) {
     fetchLink = `https://api.pexels.com/v1/search?query=${query}+query&per_page=15&page=1`;
     const data = await fetchApi(fetchLink);
     // console.log(`${query} query`);
-    generatePictures(data);
+    console.log(data);
+    if (data.total_results == 0) {
+        alert(`No results for ${query}`);
+    } else {
+        generatePictures(data);
+    }
 }
 
 function clear() {
