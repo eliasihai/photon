@@ -6,20 +6,50 @@
 // );
 const auth = "563492ad6f9170000100000176103c31ed3d49e4ad294c03b6f0ee70";
 const gallery = document.querySelector(".gallery");
+const header = document.querySelector("header");
 const searchInput = document.querySelector(".search-input");
-const form = document.querySelector(".search-form");
+const searchForm = document.querySelector(".search_form");
+const subBtn = document.querySelector(".submit-btn");
 const more = document.querySelector(".more");
+const reload = document.querySelector(".reload");
 let searchValue;
 let page = 1;
 let fetchLink;
 let currentSearch;
+let errMsg = true;
+
+reload.style.display = 'none';
 
 //Event Listeners
 searchInput.addEventListener("input", updateInput);
-form.addEventListener("click", (event) => {
+
+subBtn.addEventListener("click", (event) => {
     event.preventDefault();
     currentSearch = searchValue;
+    console.log(`currentSearch  ${currentSearch}`);
     searchPhotos(searchValue);
+
+    if (searchValue != null) {
+        searchPhotos(searchValue);
+        searchValue = null;
+    } else if (searchValue == null) {
+        console.log("nullllllllllllllll");
+
+        if (errMsg == true) {
+            const searchErrMsg = document.createElement("div");
+            searchErrMsg.classList.add("searchErrMsg_class");
+            searchErrMsg.innerHTML = `
+            <div class="searchErrMsg-div">
+            <p>Photos not found</p>`;
+
+            searchForm.appendChild(searchErrMsg);
+            errMsg = false;
+        }
+
+        more.style.display = 'none';
+
+        reload.style.display = 'block';
+    }
     // if (window.innerWidth > 450) {
     //     searchPhotos(searchValue);
     // } else {
@@ -69,7 +99,6 @@ function generatePictures(data) {
 async function curatedPhotos() {
     fetchLink = "https://api.pexels.com/v1/curated?per_page=15&page=1";
     const data = await fetchApi(fetchLink);
-
     // console.log(data);
     generatePictures(data);
 }
@@ -78,18 +107,22 @@ async function searchPhotos(query) {
     clear();
     fetchLink = `https://api.pexels.com/v1/search?query=${query}+query&per_page=15&page=1`;
     const data = await fetchApi(fetchLink);
-    // console.log(`${query} query`);
+
     console.log(data);
-    if (data.total_results == 0) {
-        alert(`No results for ${query}`);
+    if (data.total_results === 0) {
+        console.log("data results is 0");
     } else {
+        console.log(`success`);
         generatePictures(data);
+        currentSearch = "";
     }
 }
 
 function clear() {
     gallery.innerHTML = "";
-    searchInput.value = "";
+    if (x == true) {
+        searchInput.value = "";
+    }
 }
 
 async function loadMore() {

@@ -22,12 +22,12 @@ header {
     max-width: 90%;
 }
 
-.search-form {
+.search_form {
     padding: 1rem;
     display: flex;
 }
 
-.search-form input {
+.search_form input {
     font-size: 1.3rem;
     padding: 0.5rem;
     border: none;
@@ -35,12 +35,12 @@ header {
     border: 2px solid rgba(60, 0, 255, 0.3);
 }
 
-.search-form input[type=text]:focus {
+.search_form input[type=text]:focus {
     border: 2px solid rgb(74, 68, 131);
     outline: none;
 }
 
-.search-form a {
+.search_form a {
     border: none;
     padding: 0.5rem;
     font-size: 2rem;
@@ -107,6 +107,23 @@ main {
 .more:hover {
     padding: 1rem 3rem;
     cursor: pointer;
+    border: 2px solid rgb(36, 34, 167);
+    color: rgb(36, 34, 167);
+    background: rgb(158, 161, 204);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.reload {
+    padding: 1rem 3rem;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    background: rgb(36, 34, 167);
+    font-size: 1rem;
+}
+
+.reload:hover {
     border: 2px solid rgb(36, 34, 167);
     color: rgb(36, 34, 167);
     background: rgb(158, 161, 204);
