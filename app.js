@@ -6,18 +6,17 @@
 // );
 const auth = "563492ad6f9170000100000176103c31ed3d49e4ad294c03b6f0ee70";
 const gallery = document.querySelector(".gallery");
-const header = document.querySelector("header");
 const searchInput = document.querySelector(".search-input");
 const searchForm = document.querySelector(".search_form");
 const subBtn = document.querySelector(".submit-btn");
 const more = document.querySelector(".more");
 const reload = document.querySelector(".reload");
+const errmsg = document.querySelector('.errmsg')
 let searchValue;
 let page = 1;
 let fetchLink;
 let currentSearch;
 let errMsg = true;
-
 reload.style.display = 'none';
 
 //Event Listeners
@@ -36,13 +35,8 @@ subBtn.addEventListener("click", (event) => {
         console.log("nullllllllllllllll");
 
         if (errMsg == true) {
-            const searchErrMsg = document.createElement("div");
-            searchErrMsg.classList.add("searchErrMsg_class");
-            searchErrMsg.innerHTML = `
-            <div class="searchErrMsg-div">
-            <p>Photos not found</p>`;
-
-            searchForm.appendChild(searchErrMsg);
+            console.log(errMsg)
+            document.getElementById('errmsg').innerHTML = 'errorrr'
             errMsg = false;
         }
 
@@ -62,6 +56,7 @@ subBtn.addEventListener("click", (event) => {
 });
 
 more.addEventListener("click", loadMore);
+reload.addEventListener('click', reloadFunc);
 
 function updateInput(event) {
     // console.log(event.target.value);
@@ -120,9 +115,7 @@ async function searchPhotos(query) {
 
 function clear() {
     gallery.innerHTML = "";
-    if (x == true) {
-        searchInput.value = "";
-    }
+    searchInput.value = "";
 }
 
 async function loadMore() {
@@ -135,6 +128,19 @@ async function loadMore() {
 
     const data = await fetchApi(fetchLink);
     generatePictures(data);
+}
+
+async function reloadFunc() {
+    document.getElementById('errmsg').innerHTML = ''
+    clear();
+    fetchLink = "https://api.pexels.com/v1/curated?per_page=15&page=1";
+    const data = await fetchApi(fetchLink);
+    generatePictures(data);
+
+    reload.style.display = 'none';
+    more.style.display = 'flex'
+
+    errMsg = true;
 }
 
 curatedPhotos();
