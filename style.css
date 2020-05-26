@@ -75,6 +75,14 @@
         height: 10vh;
     }
     
+    .searchErrMsg_class {
+        display: flex;
+        justify-content: flex-end;
+        margin: auto;
+        width: 70%;
+        max-width: 70%;
+    }
+    
     main {
         width: 90%;
         margin: 0 auto;
@@ -111,6 +119,12 @@
     .gallery-img img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
+    }
+    
+    .gallery-img .heart {
+        width: 5%;
+        height: 5%;
         object-fit: cover;
     }
     
@@ -155,12 +169,4 @@
         background: rgb(158, 161, 204);
         font-size: 1rem;
         font-weight: 700;
-    }
-    
-    .searchErrMsg_class {
-        display: flex;
-        justify-content: flex-end;
-        margin: auto;
-        width: 80%;
-        max-width: 80%;
     }

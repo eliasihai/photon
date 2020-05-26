@@ -16,7 +16,9 @@ let searchValue;
 let page = 1;
 let fetchLink;
 let currentSearch;
+let noSearchResualts = false;
 let errMsg = true;
+let counter = 0;
 reload.style.display = 'none';
 
 //Event Listeners
@@ -29,20 +31,16 @@ subBtn.addEventListener("click", (event) => {
     searchPhotos(searchValue);
 
     if (searchValue != null) {
-        searchPhotos(searchValue);
         searchValue = null;
-    } else if (searchValue == null) {
-        console.log("nullllllllllllllll");
+    } else if (searchValue == null || noSearchResualts == false) {
 
         if (errMsg == true) {
-            console.log(errMsg)
-            document.getElementById('errmsg').innerHTML = 'errorrr'
+            document.getElementById('errmsg').innerHTML = '*Photos not found'
             errMsg = false;
         }
-
         more.style.display = 'none';
-
         reload.style.display = 'block';
+        noSearchResualts == false;
     }
     // if (window.innerWidth > 450) {
     //     searchPhotos(searchValue);
@@ -83,6 +81,8 @@ function generatePictures(data) {
         galleryImg.innerHTML = `
         <div class="gallery-info">
         <p>${photo.photographer}</p>
+        <img class='heart' src="./image/heart.png"/>
+        <p>${counter}</p>
         <a href=${photo.src.original}>Download</a>
         </div>
         <img src=${photo.src.large}></img>`;
