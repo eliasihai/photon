@@ -81,8 +81,6 @@ function generatePictures(data) {
         galleryImg.innerHTML = `
         <div class="gallery-info">
         <p>${photo.photographer}</p>
-        <img class='heart' src="./image/heart.png"/>
-        <p>${counter}</p>
         <a href=${photo.src.original}>Download</a>
         </div>
         <img src=${photo.src.large}></img>`;
